@@ -1,10 +1,14 @@
 import React from 'react';
+import { NavigationContainer } from "@react-navigation/native";
 
-import HomeScreen from "./src/screens/home";
+import BottomBar from './src/components/BottomBar';
+
 
 const App = () => {
   return (
-    <HomeScreen />
+    <NavigationContainer>
+      <BottomBar />
+    </NavigationContainer>
   );
 }
 

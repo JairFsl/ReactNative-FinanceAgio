@@ -1,38 +1,45 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
-import { NavigationContainer } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
 
 import HomeScreen from "../../screens/home";
-import SettingScreen from "../../screens/Setting";
+import SettingScreen from "../../screens/setting";
 
 const homeName = "Home";
-const settingName = "Setting";
+const settingName = "Settings";
 
 const Tab = createMaterialBottomTabNavigator();
 
 const BottomBar = () => {
   return (
-    <NavigationContainer style={styles.container} independent={true}>
       <Tab.Navigator
-        initialRouteName="Home"
+        initialRouteName={homeName}
         activeColor="#3e2465"
-        inactiveColor="#f0edf6"
+        inactiveColor="#000f55"
         barStyle={styles.tabNav}
       >
-        <Tab.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{
-            tabBarLabel: "Home",
-            tabBarIcon: ({ color }) => (
-              <Feather name="home" color={color} size={24} />
-            ),
-          }}
-        />
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          tabBarLabel: homeName,
+          tabBarIcon: ({ color }) => (
+            <Feather name="home" color={color} size={24} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Setting"
+        component={SettingScreen}
+        options={{
+          tabBarLabel: settingName,
+          tabBarIcon: ({ color }) => (
+            <Feather name="settings" color={color} size={24} />
+          ),
+        }}
+      />
       </Tab.Navigator>
-    </NavigationContainer>
   );
 };
 
@@ -45,7 +52,6 @@ const styles = StyleSheet.create({
     marginBottom: 25,
     right: 10,
     left: 10,
-    width: "80%",
     height: 50,
   },
 });
