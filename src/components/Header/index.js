@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   StyleSheet,
@@ -14,14 +14,23 @@ const statusBarHeight = StatusBar.currentHeight
   : 80;
 
 const Header = ({ name }) => {
+
+  const [show, setShow] = useState(false);
+
   return (
     <View style={styles.container}>
       <View style={styles.content}>
         <Text style={styles.title}>{name}</Text>
 
-        <TouchableOpacity activeOpacity={0.9} style={styles.buttonUser}>
-          <Feather name="user" size={28} />
-        </TouchableOpacity>
+        <View style={{flexDirection: "row"}}>  
+          <TouchableOpacity activeOpacity={0.9} style={styles.buttonEye} >
+            <Feather name="eye-off" size={22} />
+          </TouchableOpacity>
+          <TouchableOpacity activeOpacity={0.9} style={styles.buttonUser} >
+            <Feather name="user" size={28} />
+          </TouchableOpacity>
+        </View>
+        
       </View>
     </View>
   );
@@ -57,6 +66,15 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 44 / 2,
+  },
+
+  buttonEye: {
+    marginRight: 10,
+
+    width: 44,
+    height: 44,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 

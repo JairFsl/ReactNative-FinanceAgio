@@ -5,35 +5,45 @@ import { Feather } from "@expo/vector-icons";
 
 import HomeScreen from "../../screens/home";
 import SettingScreen from "../../screens/setting";
+import BankScreen from "../../screens/bank"
 
-const homeName = "Home";
-const settingName = "Settings";
 
 const Tab = createMaterialBottomTabNavigator();
 
 const BottomBar = () => {
   return (
       <Tab.Navigator
-        initialRouteName={homeName}
-        activeColor="#3e2465"
-        inactiveColor="#000f55"
+        initialRouteName="Home"
+        activeColor="#0f0f55"
+        inactiveColor="#3e2465"
         barStyle={styles.tabNav}
       >
       <Tab.Screen
         name="Home"
         component={HomeScreen}
         options={{
-          tabBarLabel: homeName,
+          tabBarLabel: "Home",
           tabBarIcon: ({ color }) => (
             <Feather name="home" color={color} size={24} />
           ),
         }}
       />
+
+      <Tab.Screen
+          name="Bank"
+          component={BankScreen}
+          options={{
+            tabBarLabel: "Bank",
+            tabBarIcon: ({ color }) => (
+              <Feather name="dollar-sign" color={color} size={24} />
+            ),
+          }}
+        />
       <Tab.Screen
         name="Setting"
         component={SettingScreen}
         options={{
-          tabBarLabel: settingName,
+          tabBarLabel: "Settings",
           tabBarIcon: ({ color }) => (
             <Feather name="settings" color={color} size={24} />
           ),

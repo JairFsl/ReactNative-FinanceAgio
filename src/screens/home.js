@@ -10,15 +10,17 @@ const HomeScreen = () => {
   const fakeDaddy = [
     {
       id: 1,
-      label: "Pix devedor 1",
+      label: "Deb auto Agio",
+      desc: "Débito automático para o agiota",
       value: "2.333,00",
-      date: "11/09/2023",
-      type: 1,
+      date: "13/09/2023",
+      type: 0,
     },
 
     {
       id: 2,
-      label: "Remuneração",
+      label: "Empre Agio",
+      desc: "Crédito adicionado via Empréstimo com o Agiota",
       value: "30.000,00",
       date: "12/09/2023",
       type: 1,
@@ -26,15 +28,17 @@ const HomeScreen = () => {
 
     {
       id: 3,
-      label: "Pix devedor 2",
+      label: "Deb auto Agio",
+      desc: "Débito automático para o agiota",
       value: "400,00",
-      date: "13/09/2023",
-      type: 1,
+      date: "11/09/2023",
+      type: 0,
     },
 
     {
       id: 4,
       label: "Pix mamãe",
+      desc: "Crédito adicionado via Pix",
       value: "100,00",
       date: "09/09/2023",
       type: 1,
@@ -42,8 +46,8 @@ const HomeScreen = () => {
   ];
 
   return (
-    <View>
-        <Header name="FinaceAgiotagens" />
+    <View style={styles.container}>
+        <Header name="FinanceAgiotagens" />
 
         <Balance saldo={3000} gastos={500} />
 
@@ -62,7 +66,7 @@ const HomeScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fafafa",
+    backgroundColor: "#fff",
   },
 
   title: {

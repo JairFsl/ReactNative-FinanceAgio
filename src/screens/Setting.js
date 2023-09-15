@@ -7,7 +7,7 @@ import Header from "../components/Header";
 const HomeScreen = () => {
   return (
     <View style={styles.container}>
-        <Header name="FinaceAgiotagens" />
+        <Header name="FinanceAgiotagens" />
       </View>
   );
 };
