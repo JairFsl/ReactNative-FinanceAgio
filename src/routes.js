@@ -3,20 +3,22 @@ import { StyleSheet } from "react-native";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { Feather } from "@expo/vector-icons";
 
-import HomeScreen from "../../screens/home";
-import SettingScreen from "../../screens/setting";
-import BankScreen from "../../screens/bank"
+import HomeScreen from "./screens/home";
+import SettingScreen from "./screens/setting";
+import BankScreen from "./screens/bank"
 
 
 const Tab = createMaterialBottomTabNavigator();
 
-const BottomBar = () => {
+const Routes = () => {
   return (
       <Tab.Navigator
         initialRouteName="Home"
         activeColor="#0f0f55"
         inactiveColor="#3e2465"
         barStyle={styles.tabNav}
+
+        keyboardHidesNavigationBar={true}
       >
       <Tab.Screen
         name="Home"
@@ -54,9 +56,6 @@ const BottomBar = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "#aa4488",
-  },
 
   tabNav: {
     marginBottom: 25,
@@ -66,4 +65,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BottomBar;
+export default Routes;

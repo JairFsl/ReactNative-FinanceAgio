@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { MotiView, MotiText, AnimatePresence } from "moti";
 
 const Moviments = ({ data }) => {
 
@@ -14,14 +15,40 @@ const Moviments = ({ data }) => {
           <Text style={styles.label}>{data.label}</Text>
 
           { showValues ? ( 
-            <Text 
-            style={data.type === 1 ? styles.income : styles.outcome}
-          >
-            {data.type === 1 ? `R$ ${data.value}` : `- R$ ${data.value}`}
-          </Text>
+            <AnimatePresence exitBeforeEnter>
+              <MotiText 
+                style={data.type === 1 ? styles.income : styles.outcome}
+                from={{
+                  translateX: 100,
+                }}
+                animate={{
+                  translateX: 0,
+                }}
+                transition={{
+                  type: "timing",
+                  duration: 500,
+                }}
+              >
+                {data.type === 1 ? `R$ ${data.value}` : `- R$ ${data.value}`}
+              </MotiText>
+            </AnimatePresence>
           ) : (
-            <View style={styles.hidden}>
-            </View>
+            <AnimatePresence exitBeforeEnter>
+              <MotiView 
+                from={{
+                  opacity: 0,
+                  translateX: 0,
+                }}
+                animate={{
+                  opacity: 1,
+                  translateX: 100,
+                }}
+                transition={{
+                  type: "timing",
+                }}
+              >
+              </MotiView>
+            </AnimatePresence>
           )}
 
           
@@ -64,14 +91,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#e74c3c",
     fontWeight: "bold",
-  },
-
-  hidden: {
-    backgroundColor: "#DADADA",
-    width: 80,
-    height: 15,
-    
-    borderRadius: 10
   }
 });
 

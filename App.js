@@ -1,13 +1,13 @@
-import React from 'react';
+import "react-native-reanimated";
 import { NavigationContainer } from "@react-navigation/native";
 
-import BottomBar from './src/components/BottomBar';
+import Routes from './src/routes';
 
 
 const App = () => {
   return (
     <NavigationContainer>
-      <BottomBar />
+      <Routes />
     </NavigationContainer>
   );
 }

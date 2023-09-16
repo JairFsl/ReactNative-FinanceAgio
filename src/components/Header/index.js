@@ -8,6 +8,7 @@ import {
 } from "react-native";
 
 import { Feather } from "@expo/vector-icons";
+import { MotiView } from "moti";
 
 const statusBarHeight = StatusBar.currentHeight
   ? StatusBar.currentHeight + 32
@@ -19,7 +20,17 @@ const Header = ({ name }) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.content}>
+      <MotiView 
+        style={styles.content}
+        from={{
+          translateY: -150,
+          opacity: 0,
+        }}
+        animate={{
+          translateY: 0,
+          opacity: 1,
+        }}  
+      >
         <Text style={styles.title}>{name}</Text>
 
         <View style={{flexDirection: "row"}}>  
@@ -31,7 +42,7 @@ const Header = ({ name }) => {
           </TouchableOpacity>
         </View>
         
-      </View>
+      </MotiView>
     </View>
   );
 };

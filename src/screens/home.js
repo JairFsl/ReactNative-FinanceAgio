@@ -5,6 +5,7 @@ import { View, Text, StyleSheet, FlatList } from "react-native";
 import Header from "../components/Header";
 import Balance from "../components/Balance";
 import Moviments from "../components/Moviments";
+import ActionTabs from "../components/ActionTabs";
 
 const HomeScreen = () => {
   const fakeDaddy = [
@@ -51,14 +52,16 @@ const HomeScreen = () => {
 
         <Balance saldo={3000} gastos={500} />
 
+        <ActionTabs />
+
         <Text style={styles.title}>Movimentações recentes:</Text>
-        <FlatList
-          style={styles.list}
-          data={fakeDaddy}
-          keyExtractor={(item) => String(item.id)}
-          showsVerticalScrollIndicator={false}
-          renderItem={({ item }) => <Moviments data={item} />}
-        />
+          <FlatList
+            style={styles.list}
+            data={fakeDaddy}
+            keyExtractor={(item) => String(item.id)}
+            showsVerticalScrollIndicator={false}
+            renderItem={({ item }) => <Moviments data={item} />}
+          />
       </View>
   );
 };
@@ -72,10 +75,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 22,
     fontWeight: "bold",
-    marginLeft: 14,
-    marginRight: 14,
-    marginTop: 30,
-    marginBottom: 10,
+    margin: 14,
 
     color: "#aa4488",
   },
