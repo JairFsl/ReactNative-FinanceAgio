@@ -4,11 +4,21 @@ import { View, Text, StyleSheet } from "react-native";
 
 import Header from "../components/Header";
 
-const HomeScreen = () => {
+import Auth from "../contexts/auth"
+
+
+const SettingScreen = () => {
+
+  
+  const { user } = Auth();
+
   return (
     <View style={styles.container}>
-        <Header name="FinanceAgiotagens" />
-      </View>
+        <Header name={user.nome} />
+
+        <Text>email: {user.nome}</Text>
+        <Text>senha: {user.email}</Text>
+    </View>
   );
 };
 
@@ -19,4 +29,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default HomeScreen;
+export default SettingScreen;

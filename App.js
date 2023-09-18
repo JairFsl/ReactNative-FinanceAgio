@@ -1,13 +1,16 @@
 import "react-native-reanimated";
 import { NavigationContainer } from "@react-navigation/native";
 
-import Routes from './src/routes';
+import Initial from './src/initial';
+import { AuthProvider } from "./src/contexts/auth";
 
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Routes />
+      <AuthProvider>
+        <Initial />
+      </AuthProvider>
     </NavigationContainer>
   );
 }

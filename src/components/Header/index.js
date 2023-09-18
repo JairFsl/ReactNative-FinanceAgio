@@ -9,14 +9,16 @@ import {
 
 import { Feather } from "@expo/vector-icons";
 import { MotiView } from "moti";
+import Auth from "../../contexts/auth"
 
 const statusBarHeight = StatusBar.currentHeight
   ? StatusBar.currentHeight + 32
   : 80;
 
-const Header = ({ name }) => {
+const Header = () => {
 
   const [show, setShow] = useState(false);
+  const { user } = Auth();
 
   return (
     <View style={styles.container}>
@@ -31,7 +33,7 @@ const Header = ({ name }) => {
           opacity: 1,
         }}  
       >
-        <Text style={styles.title}>{name}</Text>
+        <Text style={styles.title}>{user.nome}</Text>
 
         <View style={{flexDirection: "row"}}>  
           <TouchableOpacity activeOpacity={0.9} style={styles.buttonEye} >

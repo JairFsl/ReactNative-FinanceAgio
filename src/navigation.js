@@ -4,13 +4,13 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 import { Feather } from "@expo/vector-icons";
 
 import HomeScreen from "./screens/home";
-import SettingScreen from "./screens/setting";
+import SettingScreen from "./screens/setting"
 import BankScreen from "./screens/bank"
 
 
 const Tab = createMaterialBottomTabNavigator();
 
-const Routes = () => {
+const NavigationBar = () => {
   return (
       <Tab.Navigator
         initialRouteName="Home"
@@ -40,16 +40,16 @@ const Routes = () => {
               <Feather name="dollar-sign" color={color} size={24} />
             ),
           }}
-        />
-      <Tab.Screen
-        name="Setting"
-        component={SettingScreen}
-        options={{
-          tabBarLabel: "Settings",
-          tabBarIcon: ({ color }) => (
-            <Feather name="settings" color={color} size={24} />
-          ),
-        }}
+      />
+        <Tab.Screen
+          name="Setting"
+          component={SettingScreen}
+          options={{
+            tabBarLabel: "Settings",
+            tabBarIcon: ({ color }) => (
+              <Feather name="settings" color={color} size={24} />
+            ),
+          }}
       />
       </Tab.Navigator>
   );
@@ -65,4 +65,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Routes;
+export default NavigationBar;

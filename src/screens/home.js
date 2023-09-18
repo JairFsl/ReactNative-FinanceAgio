@@ -7,7 +7,14 @@ import Balance from "../components/Balance";
 import Moviments from "../components/Moviments";
 import ActionTabs from "../components/ActionTabs";
 
+import Auth from "../contexts/auth"
+
+
 const HomeScreen = () => {
+
+  const { user } = Auth();
+
+
   const fakeDaddy = [
     {
       id: 1,
@@ -48,7 +55,7 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.container}>
-        <Header name="FinanceAgiotagens" />
+        <Header name={user.name} />
 
         <Balance saldo={3000} gastos={500} />
 

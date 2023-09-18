@@ -1,31 +1,29 @@
-import React, { createContext, useState } from "react"
-import { useNavigation } from "@react-navigation/native"
+import React, { createContext, useState, useContext } from "react"
 
-const AuthContext = createContext({});
-const navigation = useNavigation();
+export const GlobalContext = createContext({});
 
-const AuthProvider = ({children}) => {
+export const AuthProvider = ({children}) => {
     const [user, setUser] = useState({});
 
-    const signIn = (email, password) => {
-        
-        if (email !== "" && password !== "") {
-            setUser({
-                email: email,
-                status: 1
-            })
-    
-            navigation.navigate("Home")
-    
-        }
+
+
+    const log = (nome, email) => {
+        setUser({
+            nome: nome,
+            email: email,
+        })
     }
+    
+
 
     return (
-        <AuthContext.Provider value={{ signIn, user }}>
+        <GlobalContext.Provider value={{ log, user }}>
             {children}
-        </AuthContext.Provider>
+        </GlobalContext.Provider>
     )
 
 }
 
-export default AuthProvider
+const  Auth = () => useContext(GlobalContext)
+
+export default Auth

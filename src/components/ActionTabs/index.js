@@ -1,69 +1,83 @@
 import React from 'react'
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native'
+
 import { Feather } from "@expo/vector-icons";
 
 
  const ActionTabs = () => {
+
     return (
-        <ScrollView style={styles.container} horizontal={true} showsHorizontalScrollIndicator={false} >
-                <TouchableOpacity style={styles.buttonTabs}>
-                    <View style={styles.actionButton}>
-                        <Feather name="folder-plus" size={38} color={"#0f0f55"} />
-                    </View>
-                    <Text style={styles.desc} >Entradas</Text>
-                </TouchableOpacity>
+
+            <ScrollView style={styles.container} horizontal={true} showsHorizontalScrollIndicator={false} >
+                    <TouchableOpacity 
+                        style={styles.buttonTabs}
+                    >
+                        <View style={styles.actionButton}>
+                            <Feather name="folder-plus" size={38} color={"#0f0f55"} />
+                        </View>
+                        <Text style={styles.desc}>Entradas</Text>
+                    </TouchableOpacity>
 
 
-                <TouchableOpacity style={styles.buttonTabs}>
-                    <View style={styles.actionButton}>
-                        <Feather name="shopping-cart" size={38} color={"#0f0f55"} />
-                    </View>
-                    <Text style={styles.desc} >Compras</Text>
-                </TouchableOpacity>
+                    <TouchableOpacity 
+                        style={styles.buttonTabs}
+                    >
+                        <View style={styles.actionButton}>
+                            <Feather name="shopping-cart" size={38} color={"#0f0f55"} />
+                        </View>
+                        <Text style={styles.desc}>Compras</Text>
+                    </TouchableOpacity>
 
 
-                <TouchableOpacity style={styles.buttonTabs}>
+                    <TouchableOpacity 
+                        style={styles.buttonTabs}
+                    >
 
-                    <View style={styles.actionButton}>
-                        <Feather name="credit-card" size={38} color={"#0f0f55"} />
-                    </View>
-                    
-                    <Text style={styles.desc}>Carteira</Text>
-                    
-                </TouchableOpacity>
+                        <View style={styles.actionButton}>
+                            <Feather name="credit-card" size={38} color={"#0f0f55"} />
+                        </View>
+                        
+                        <Text style={styles.desc}>Carteira</Text>
+                        
+                    </TouchableOpacity>
 
 
-                <TouchableOpacity style={styles.buttonTabs}>
+                    <TouchableOpacity 
+                        style={styles.buttonTabs}
+                    >
 
-                    <View style={styles.actionButton}>
-                        <Feather name="trending-up" size={38} color={"#0f0f55"} />
-                    </View>
-                    
-                    <Text style={styles.desc}>Investimentos</Text>
-                    
-                </TouchableOpacity>
+                        <View style={styles.actionButton}>
+                            <Feather name="trending-up" size={38} color={"#0f0f55"} />
+                        </View>
+                        
+                        <Text style={styles.desc}>Investimentos</Text>
+                        
+                    </TouchableOpacity>
 
-                <TouchableOpacity style={styles.buttonTabs}>
+                    <TouchableOpacity 
+                        style={styles.buttonTabs}
+                    >
+                        <View style={styles.actionButton}>
+                            <Feather style={styles.icon} name="align-justify" size={38} color={"#0f0f55"} />
+                        </View>
+                        
+                        <Text style={styles.desc}>Pagamentos</Text>
+                        
+                    </TouchableOpacity>
 
-                    <View style={styles.actionButton}>
-                        <Feather style={styles.icon} name="align-justify" size={38} color={"#0f0f55"} />
-                    </View>
-                    
-                    <Text style={styles.desc}>Pagamentos</Text>
-                    
-                </TouchableOpacity>
+                    <TouchableOpacity 
+                        style={styles.buttonTabs}
+                    >
 
-                <TouchableOpacity style={styles.buttonTabs}>
+                        <View style={styles.actionButton}>
+                            <Feather name="shield" size={38} color={"#0f0f55"} />
+                        </View>
+                        
+                        <Text style={styles.desc}>Proteção</Text>
+                        
+                    </TouchableOpacity>
 
-                    <View style={styles.actionButton}>
-                        <Feather name="shield" size={38} color={"#0f0f55"} />
-                    </View>
-                    
-                    <Text style={styles.desc}>Proteção</Text>
-                    
-                </TouchableOpacity>
-
-        </ScrollView>
+            </ScrollView>
     )
  }
 
