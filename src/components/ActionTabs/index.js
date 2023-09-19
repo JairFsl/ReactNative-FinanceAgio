@@ -1,16 +1,22 @@
 import React from 'react'
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native'
+import { useNavigation } from "@react-navigation/native";
 
 import { Feather } from "@expo/vector-icons";
 
+import { Routes } from "../routes"
 
- const ActionTabs = () => {
+
+ const ActionTabs = ({ modalizeRef }) => {
+    const navigation = useNavigation();
 
     return (
 
-            <ScrollView style={styles.container} horizontal={true} showsHorizontalScrollIndicator={false} >
+        <View style={styles.container}>
+            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} >
                     <TouchableOpacity 
                         style={styles.buttonTabs}
+                        onPress={() => Routes(navigation, "Entry")}
                     >
                         <View style={styles.actionButton}>
                             <Feather name="folder-plus" size={38} color={"#0f0f55"} />
@@ -21,6 +27,7 @@ import { Feather } from "@expo/vector-icons";
 
                     <TouchableOpacity 
                         style={styles.buttonTabs}
+                        // onPress={() => Routes(navigation, "")}
                     >
                         <View style={styles.actionButton}>
                             <Feather name="shopping-cart" size={38} color={"#0f0f55"} />
@@ -56,6 +63,7 @@ import { Feather } from "@expo/vector-icons";
 
                     <TouchableOpacity 
                         style={styles.buttonTabs}
+                        onPress={() => modalizeRef.current?.open()}
                     >
                         <View style={styles.actionButton}>
                             <Feather style={styles.icon} name="align-justify" size={38} color={"#0f0f55"} />
@@ -77,7 +85,13 @@ import { Feather } from "@expo/vector-icons";
                         
                     </TouchableOpacity>
 
+                    
+
             </ScrollView>
+
+        </View>
+
+            
     )
  }
 

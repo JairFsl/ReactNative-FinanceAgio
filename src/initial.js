@@ -3,7 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack"
 
 import EntryScreen from "./screens/entry"
 import SignIn from "./screens/signIn"
-// import SignUp from "./screens/signIn"
+import PaymentScreen from "./screens/payment"
 import NavigationBar from "./navigation"
 
 const Initial = () => {
@@ -24,6 +24,7 @@ const Initial = () => {
             <Stack.Screen name="Entry" component={EntryScreen} />
             {/* <Stack.Screen name="Shop" component={} />
             <Stack.Screen name="Wallet" component={} /> */}
+            <Stack.Screen name="Payment" component={PaymentScreen} />
 
             {/* BottomBar */}
             <Stack.Screen name="BottomBar" component={NavigationBar} />

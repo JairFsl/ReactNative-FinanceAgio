@@ -1,5 +1,5 @@
-import React from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import React, { useRef } from "react";
+import { View, Text, StyleSheet, FlatList, TouchableOpacity } from "react-native";
 
 
 import Header from "../components/Header";
@@ -9,10 +9,15 @@ import ActionTabs from "../components/ActionTabs";
 
 import Auth from "../contexts/auth"
 
+import { Modals } from "../components/Modals/Portal";
+import PayModal from "../components/Modals/payment";
+
+
 
 const HomeScreen = () => {
 
   const { user } = Auth();
+  const actionTabsRef = useRef(null);
 
 
   const fakeDaddy = [
@@ -59,17 +64,28 @@ const HomeScreen = () => {
 
         <Balance saldo={3000} gastos={500} />
 
-        <ActionTabs />
+        <ActionTabs modalizeRef={actionTabsRef} />
 
         <Text style={styles.title}>Movimentações recentes:</Text>
-          <FlatList
-            style={styles.list}
-            data={fakeDaddy}
-            keyExtractor={(item) => String(item.id)}
-            showsVerticalScrollIndicator={false}
-            renderItem={({ item }) => <Moviments data={item} />}
-          />
-      </View>
+        <FlatList
+          style={styles.list}
+          data={fakeDaddy}
+          keyExtractor={(item) => String(item.id)}
+          showsVerticalScrollIndicator={false}
+          renderItem={({ item }) => <Moviments data={item} />}
+        />
+
+        {/* <TouchableOpacity style={{width: "50%", height: 50, position: "absolute", top: 50, backgroundColor: "#000fff"}} onPress={() => actionTabsRef.current?.open()}>
+          
+        </TouchableOpacity> */}
+
+        <Modals>
+          <PayModal modalizeRef={actionTabsRef} />
+        </Modals>
+          
+
+          
+    </View>
   );
 };
 

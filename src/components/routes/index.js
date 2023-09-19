@@ -1,8 +1,5 @@
-import { useNavigation } from "@react-navigation/native";
+export function Routes (nav, path) {
+    
+        nav.navigate(path)
 
-const Routes = (path) => {
-    const navigation = useNavigation();
-    navigation.navigate(path)
 }
-
-export default Routes;

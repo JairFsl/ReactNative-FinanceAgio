@@ -1,17 +1,23 @@
 import "react-native-reanimated";
+import "react-native-gesture-handler"
 import { NavigationContainer } from "@react-navigation/native";
 
 import Initial from './src/initial';
 import { AuthProvider } from "./src/contexts/auth";
+import { Host } from "react-native-portalize"
 
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <AuthProvider>
-        <Initial />
-      </AuthProvider>
-    </NavigationContainer>
+    
+    <AuthProvider>
+      <NavigationContainer>
+          <Host>
+            <Initial />
+          </Host>
+      </NavigationContainer>
+    </AuthProvider>
+    
   );
 }
 
