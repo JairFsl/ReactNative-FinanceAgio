@@ -75,9 +75,6 @@ const HomeScreen = () => {
           renderItem={({ item }) => <Moviments data={item} />}
         />
 
-        {/* <TouchableOpacity style={{width: "50%", height: 50, position: "absolute", top: 50, backgroundColor: "#000fff"}} onPress={() => actionTabsRef.current?.open()}>
-          
-        </TouchableOpacity> */}
 
         <Modals>
           <PayModal modalizeRef={actionTabsRef} />

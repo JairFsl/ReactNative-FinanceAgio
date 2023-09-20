@@ -1,8 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
-    View, Text, TouchableOpacity, StyleSheet, Button
+    Content,
+    Title,
+    Press,
+    Footer,
+} from "./styles"
+
+import {
+    Keyboard
 } from "react-native"
 
+import { Picker } from "@react-native-picker/picker"
 
 import { Modalize } from "react-native-modalize";
 
@@ -11,60 +19,97 @@ import { Feather } from "@expo/vector-icons";
 
 const PayModal = ({ modalizeRef }) => {
     const [isSelected, setSelection] = useState(false)
+    const [selectLang, setLang] = useState("")
+    const pickerRef = useRef();
+
+    function open() {
+        pickerRef.current.focus();
+    }
+    function close() {
+        pickerRef.current.close();
+    }
 
     return (
-        <Modalize 
+        <Modalize
+            modalStyle={{
+                flex: 1,
+                justifyContent: "center",
+                backgroundColor: "#DADADA",
+                borderTopEndRadius: 20,
+                borderTopStartRadius: 20,
+            }}
             ref={modalizeRef}
             modalHeight={500}
             panGestureEnabled={false}
-            style={styles.container}
+            openAnimationConfig={{
+                timing: { duration: 400 },
+                spring: { speed: 20, bounciness: 10 }
+            }}
+            closeAnimationConfig={{
+                timing: { duration: 400 },
+                spring: { speed: 20, bounciness: 10 }
+            }}
+
+            HeaderComponent={
+
+                <Footer>
+                    <Press
+                        title=""
+                        onPress={() => modalizeRef.current.close()}
+                    >
+                        <Feather name="arrow-down" size={30} color={"#fff"} />
+                    </Press>
+                </Footer>
+            }
         >
-            <View style={styles.contentContainer}>
-                <Text style={styles.title}>
+            <Content>
+                <Title>
                     Selecione o método de pagamento:
-                </Text>
+                </Title>
 
-                <Button
-                    style={styles.button}
-                    title="PIX"
-                />
-                <Button
-                    style={styles.button}
-                    title="Cartão"
-                />
-                <Button
-                    style={styles.button}
-                    title="Dinheiro"
-                />
+                <Picker
 
-            </View>
+                    style={{
+                        alignSelf: "center",
+
+                        fontSize: 24,
+                        backgroundColor: "#009688",
+                        borderRadius: 10,
+                        paddingVertical: 10,
+                        paddingHorizontal: 12,
+
+                        width: "80%",
+                        borderRadius: 10,
+                    }}
+                    ref={pickerRef}
+                    selectValue={selectLang}
+                    onValueChange={(itemValue) => setLang(itemValue)}
+                    itemStyle={{
+                        borderRadius: 40,
+                    }}
+                >
+                    <Picker.Item 
+                        label="Java"
+                        value={"Java"}
+                        style={{
+                            fontSize: 24,
+                        }}  
+                    />
+                    <Picker.Item
+                        label="Javascript"
+                        value={"Javascript"}
+                    />
+
+
+                </Picker>
+
+
+                
+
+            </Content>
         </Modalize>
         
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#DADADA",
-        justifyContent: "center",
-        alignItems: "center",
-    },
-
-    contentContainer: {
-        marginTop: 20,
-        justifyContent: "center",
-        alignItems: "center",
-    },
-
-    title: {
-        fontSize: 28,
-        fontWeight: "bold"
-    },
-
-    button: {
-        margin: 5,
-    }
-})
 
 export default PayModal;
