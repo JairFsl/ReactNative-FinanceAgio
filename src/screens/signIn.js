@@ -3,6 +3,7 @@ import { View, Text, TextInput, Button } from "react-native";
 import Auth from "../contexts/auth";
 
 import { Formik } from "formik";
+import Yup from "yup";
 
 import { useNavigation } from "@react-navigation/native";
 
