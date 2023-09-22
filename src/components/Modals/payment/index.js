@@ -1,25 +1,36 @@
 import React, { useState, useRef } from "react";
-import { Content, Title, Press, Footer, PressPay } from "./styles";
+import { Content, Title, Press, Footer, PressPay, ScanText } from "./styles";
 
-import { Text } from "react-native";
+import { Text, StyleSheet, FlatList, View, TouchableOpacity } from "react-native";
 
 import { Picker } from "@react-native-picker/picker";
 
 import { Modalize } from "react-native-modalize";
-
 import { Feather } from "@expo/vector-icons";
+import RadioButton from "./components/radio";
+
+import Auth from "../../../contexts/auth";
+
+import { Camera } from "expo-camera";
 
 const PayModal = ({ modalizeRef }) => {
-  const [isSelected, setSelection] = useState(false);
-  const [selectLang, setSelectLang] = useState("");
   const pickerRef = useRef();
+  const { checked } = Auth();
 
-  function open() {
-    pickerRef.current.focus();
-  }
-  function close() {
-    pickerRef.current.close();
-  }
+  const radios = [
+    {
+      key: "PIX",
+      text: "PIX",
+    },
+    {
+      key: "CARTAO",
+      text: "CARTÃO",
+    },
+    {
+      key: "BOLETO",
+      text: "BOLETO",
+    },
+  ];
 
   return (
     <Modalize
@@ -32,7 +43,7 @@ const PayModal = ({ modalizeRef }) => {
       }}
       ref={modalizeRef}
       modalHeight={650}
-      panGestureEnabled={false}
+      panGestureEnabled={true}
       openAnimationConfig={{
         timing: { duration: 400 },
         spring: { speed: 20, bounciness: 10 },
@@ -52,50 +63,24 @@ const PayModal = ({ modalizeRef }) => {
       <Content>
         <Title>Selecione o método de pagamento:</Title>
 
-        <Picker
-          style={{
-            alignSelf: "center",
+        <FlatList
+          style={styles.list}
+          data={radios}
+          keyExtractor={(item) => String(item.key)}
+          showsVerticalScrollIndicator={false}
+          renderItem={({ item }) => <RadioButton data={item} /> }
+        />
 
-            fontSize: 24,
-            backgroundColor: "#009688",
-            borderRadius: 10,
-            paddingVertical: 10,
-            paddingHorizontal: 12,
-
-            width: "80%",
-            borderRadius: 10,
-          }}
-          ref={pickerRef}
-          selectedValue={selectLang}
-          onValueChange={(itemValue, itemIndex) => {
-            setSelectLang(itemValue);
-          }}
-          itemStyle={{
-            borderRadius: 40,
-          }}
-        >
-          <Picker.Item
-            label="PIX"
-            value={"pix"}
-            style={{
-              fontSize: 24,
-            }}
-          />
-          <Picker.Item
-            label="CARTÃO"
-            value={"cartao"}
-            style={{
-              fontSize: 24,
-            }}
-          />
-          <Picker.Item
-            label="BOLETO"
-            value={"boleto"}
-            style={{
-              fontSize: 24,
-            }}
-          />
-        </Picker>
+        {checked == "BOLETO" ?
+        <View style={{ alignItems: "center", marginTop: 50, justifyContent: "center" }}>
+            <TouchableOpacity>
+                <ScanText>ESCANEAR CÓDIGO DE BARRAS</ScanText>
+            </TouchableOpacity>
+        </View>
+        :
+        <View style={{ alignItems: "center", marginTop: 50, justifyContent: "center" }}>
+        </View>
+        }
 
         <PressPay>
           <Text>PAGAR</Text>
@@ -104,5 +89,15 @@ const PayModal = ({ modalizeRef }) => {
     </Modalize>
   );
 };
+
+const styles = StyleSheet.create({
+
+  list: {
+    marginStart: 14,
+    marginEnd: 14,
+    padding: 20,
+  },
+})
+
 
 export default PayModal;

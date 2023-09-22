@@ -2,7 +2,7 @@ import styled from "styled-components/native";
 
 export const Content = styled.View`
   width: 90%;
-  height: 90%;
+  height: 500cqw;
   justify-self: center;
   align-self: center;
 
@@ -11,7 +11,7 @@ export const Content = styled.View`
 `;
 
 export const Title = styled.Text`
-  font-size: 28;
+  font-size: 28px;
   font-weight: bold;
   margin: 30px;
 `;
@@ -29,9 +29,14 @@ export const PressPay = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
   align-self: center;
-  margin-top: 40%;
+  bottom: -50px;
   width: 60%;
   height: 40px;
 
   background-color: #dadaff;
+`;
+
+export const ScanText = styled.Text`
+  color: blue;
+  text-decoration: underline;
 `;
